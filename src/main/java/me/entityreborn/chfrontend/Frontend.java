@@ -38,6 +38,7 @@ public class Frontend extends JFrame {
 
         return front;
     }
+    
     private boolean populatingCombo;
 
     private Frontend() {
@@ -49,9 +50,11 @@ public class Frontend extends JFrame {
         
         setProfile("Default");
 
-        reconnect();
-
         txtMessage.grabFocus();
+    }
+    
+    public void configChanged() {
+        populateCombo();
     }
     
     private void populateCombo() {
@@ -60,6 +63,10 @@ public class Frontend extends JFrame {
         
         for (Profile profile : Profiles.getProfiles()) {
             comboProfiles.addItem(profile);
+        }
+        
+        if (!Profiles.getProfiles().contains(currProfile)) {
+            currProfile = Profiles.getProfile("Default");
         }
         
         comboProfiles.setSelectedItem(currProfile);

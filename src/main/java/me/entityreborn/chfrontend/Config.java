@@ -88,6 +88,8 @@ public class Config extends javax.swing.JFrame {
         currProfile.outport = (Long)portOut.getValue();
         
         Profiles.save();
+        
+        Frontend.getFrontend().configChanged();
     }
     
     @SuppressWarnings("unchecked")
